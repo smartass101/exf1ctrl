@@ -117,7 +117,7 @@ int main(int argc, char** argv)
    {
       printf("> ");
       
-      gets(input);
+      fgets(input, 64, stdin);
       sscanf(input, "%c", &com);
       
       switch (com) {
