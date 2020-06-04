@@ -341,6 +341,7 @@ static const char * const cdjpeg_message_table[] = {
   NULL
 };
 
+#ifdef EXF1API_WITH_OPENCV
 void exf1api::getCameraFrame(IplImage* frame)
 {
     char jpgImage[3*IMG_BUF_SIZE];
@@ -392,6 +393,7 @@ void exf1api::getCameraFrame(IplImage* frame)
     else
         printf("JPG size is negative!\n"); 
 }
+#endif // EXF1API_WITH_OPENCV
 
 void exf1api::terminateCamera(void)
 {

@@ -9,10 +9,12 @@
 #define	EXF1API_H
 
 #include "libexf1.h"
+#ifdef EXF1API_WITH_OPENCV
 #define CV_NO_BACKWARD_COMPATIBILITY
 #include <cv.h>
-#include <ctype.h>
 #include <jpeglib.h>
+#endif  // EXF1API_WITH_OPENCV
+#include <ctype.h>
 //#include <cderror.h>
 
 #define JMESSAGE(code,string) string ,
@@ -57,7 +59,9 @@ class exf1api {
 	void focus(char focusIn, char continousFocus);
 
 	int grapPcMonitorFrame(const char *jpgImage);
-	void getCameraFrame(IplImage* frame); 
+#ifdef EXF1API_WITH_OPENCV
+	void getCameraFrame(IplImage* frame);
+#endif
 	void exitCamera(void);
 
 	libexf1 lib; 
