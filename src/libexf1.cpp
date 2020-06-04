@@ -161,7 +161,7 @@ void libexf1::exf1Cmd(WORD cmd, ...)
         case CMD_GET_OBJECT:
             wordVal  = va_arg(ap, int); // File/memory destination.
             dwordVal = va_arg(ap, int); // objectHandle
-            pString = (char *) va_arg(ap, int); //
+            pString = va_arg(ap, char *); //
             
             switch (wordVal) {
                 case TO_FILE:
@@ -170,7 +170,7 @@ void libexf1::exf1Cmd(WORD cmd, ...)
                     usbRx();
                     break;
                 case TO_MEM:
-                    pInt = (int *) va_arg(ap, int); //
+                    pInt = va_arg(ap, int *); //
 					do {
 						usbTx(cmd, TYPE_CMD, sizeof(DWORD), dwordVal, 0);
 						usbRxToMem(pString, pInt);
